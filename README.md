@@ -1,4 +1,4 @@
-# 🌐 CV Hosting on AWS with Terraform
+#  CV Hosting on AWS with Terraform
 
 This project demonstrates how to host a personal CV website using **Amazon S3** and **Terraform**.  
 The website is a static HTML page (`index.html`) deployed via Infrastructure as Code (IaC).
@@ -31,19 +31,20 @@ http://raghad-cv-hosting-bucket.s3-website-us-east-1.amazonaws.com
 
 ### file structure 
 cv-hosting/
-├── index.html         # Your CV webpage
-├── main.tf            # Terraform configuration for AWS S3
-├── outputs.tf         # Optional: to display the website URL
-├── .gitignore         # To exclude .terraform and tfstate files
+
+- index.html         # Your CV webpage
+- main.tf            # Terraform configuration for AWS S3
+- outputs.tf         # Optional: to display the website URL
+- .gitignore         # To exclude .terraform and tfstate files
 
 ---
 
 ### future improvements 
 
-# Add CloudFront as a CDN for lower latency
+- Add CloudFront as a CDN for lower latency
 
-# Buy and connect a custom domain via Route 53
+- Buy and connect a custom domain via Route 53
 
-# Add HTTPS with an SSL certificate
+-  Add HTTPS with an SSL certificate
 
  
