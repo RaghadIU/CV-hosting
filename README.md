@@ -1,50 +1,91 @@
-#  CV Hosting on AWS with Terraform
+# CV Hosting on AWS – Terraform-based Cloud Deployment
 
-This project demonstrates how to host a personal CV website using **Amazon S3** and **Terraform**.  
-The website is a static HTML page (`index.html`) deployed via Infrastructure as Code (IaC).
-
----
-
-## Project Overview
-
-- **Goal:** Deploy a static resume (CV) webpage to AWS.
-- **Tools Used:** Terraform, AWS S3, AWS CLI.
-- **Hosting Type:** Static website (HTML only).
-- **Infrastructure Style:** Fully automated with Terraform.
+This project showcases how to host a personal CV website using a scalable and production-like cloud architecture with **Amazon Web Services (AWS)** and **Terraform**.  
+It includes both **S3 static hosting** and **EC2 auto-scaled deployment**, fully provisioned through Infrastructure as Code (IaC).
 
 ---
 
-## Technologies Used
+## Project Objectives
 
-- **AWS S3:** To host the static HTML file publicly.
-- **Terraform:** To define and deploy infrastructure as code.
-- **AWS CLI:** To authenticate and connect Terraform to AWS.
-- **HTML/CSS:** For the visual design of the CV.
+- Deploy a **static CV website** in the cloud.
+- Use **Terraform** for full automation.
+- Ensure high availability, global accessibility, and scalability.
+- Implement both **S3 + CloudFront** and **EC2 with Load Balancer + Auto Scaling** solutions.
 
 ---
 
-## website Output 
+## Technologies & Services Used
+
+| Service          | Purpose                                      |
+|------------------|----------------------------------------------|
+| **Amazon S3**    | Static website hosting for `index.html`.     |
+| **CloudFront**   | CDN to cache and serve content globally.     |
+| **EC2**          | Backend hosting for auto-scaled environments.|
+| **ALB**          | Load balancing across EC2 instances.         |
+| **Auto Scaling** | Automatically adjusts number of EC2s.        |
+| **Terraform**    | Infrastructure as Code to provision AWS.     |
+| **IAM**          | Secure access management for automation.     |
+| **HTML/CSS**     | Front-end for the CV design.                 |
+
+---
+
+## Architecture
+
+User ─▶ CloudFront ─▶ S3 (Static CV Page)
+OR 
+User ─▶ ALB ─▶ Auto Scaling Group ─▶ EC2 Instances
+
+---
+
+## Live Website URLs 
+CloudFront CDN (S3 Page)
+
 ```bash
-http://raghad-cv-hosting-bucket.s3-website-us-east-1.amazonaws.com
+https://d2i8soqm4xrnh2.cloudfront.net 
+
+```
+Application Load Balancer
+
+```bash
+http://cv-alb-1432520488.us-east-1.elb.amazonaws.com
+
+```
+EC2 Instance (Direct IP)
+
+```bash
+http://44.204.120.179
+
 ```
 ---
 
-### file structure 
-cv-hosting/
+ ## How to Deploy Locally
 
-- index.html         # Your CV webpage
-- main.tf            # Terraform configuration for AWS S3
-- outputs.tf         # Optional: to display the website URL
-- .gitignore         # To exclude .terraform and tfstate files
+ Clone the repo
 
+```bash
+git clone https://github.com/RaghadIU/CV-hosting.git
+```
+```bash
+cd CV-hosting
+```
+Initialize Terraform
+
+```bash
+terraform init
+
+```
+Apply the infrastructure
+
+```bash
+terraform apply
+
+```
 ---
 
-### future improvements 
+## future improvements 
 
-- Add CloudFront as a CDN for lower latency
+- Add a custom domain via Route 53.
 
-- Buy and connect a custom domain via Route 53
+- Enable HTTPS for both ALB and CloudFront using SSL.
 
--  Add HTTPS with an SSL certificate
-
- 
+- Add CI/CD for automated CV updates.
