@@ -74,6 +74,12 @@ Initialize Terraform
 terraform init
 
 ```
+Preview Infrastructure Changes
+
+```bash
+terraform plan
+
+```
 Apply the infrastructure
 
 ```bash
