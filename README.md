@@ -29,33 +29,31 @@ It includes both **S3 static hosting** and **EC2 auto-scaled deployment**, fully
 
 ---
 
-## Architecture
-
-User ─▶ CloudFront ─▶ S3 (Static CV Page)
-OR 
-User ─▶ ALB ─▶ Auto Scaling Group ─▶ EC2 Instances
-
----
-
-## Live Website URLs 
-CloudFront CDN (S3 Page)
+## Project Output Links
+CV website (CV Hosted on S3)
 
 ```bash
-https://d2i8soqm4xrnh2.cloudfront.net 
+http://raghad-cv-hosting-bucket.s3-website-us-east-1.amazonaws.com
 
 ```
-Application Load Balancer
-
-```bash
-http://cv-alb-1432520488.us-east-1.elb.amazonaws.com
-
-```
-EC2 Instance (Direct IP)
+Static hosting of the CV webpage using Amazon S3 (EC2 Instance Test Page)
 
 ```bash
 http://44.204.120.179
 
 ```
+Apache running on a single EC2 instance as part of the backend infrastructure (Load Balancer URL)
+
+```bash
+http://cv-alb-1432520488.us-east-1.elb.amazonaws.com
+
+```
+Application Load Balancer distributing traffic between multiple EC2 instances to ensure high availability and auto scaling (CloudFront Distribution)
+```bash
+https://d2i8soqm4xrnh2.cloudfront.net
+
+```
+
 ---
 
  ## How to Deploy Locally
